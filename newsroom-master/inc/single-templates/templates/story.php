@@ -72,31 +72,6 @@
 						</ul>
 					</aside>
 
-
-					<div class="author-card">
-						<?php $author_id = get_the_author_meta( 'ID' ); ?>
-						
-						<div class="author-bio-avatar">
-							<?php echo get_avatar( get_the_author_meta( 'user_email' ) ); ?>
-						</div>
-
-						<div class="author-bio-description">
-							<h3 class="author-headline"><?php echo get_the_author() ; ?></h3>
-							<?php if ( get_the_author_meta( 'description' ) ) : ?>
-								<p class="author-card-about">About the author</p>
-						   	 	<?php the_author_meta( 'description' ); ?>
-						   	 <?php endif; ?>
-						</div>
-
-						<div class="author-card-count">
-							<ul>
-								<li><?php echo count_user_posts($author_id);?> Posts</li>
-								<li><a href="<?php bloginfo('url');?>/author/<?php the_author_meta( 'first_name' );?>-<?php the_author_meta( 'last_name' );?>">See all <span class="mobHide">posts by this author</span></a></li>
-							</ul>
-						</div>
-					</div>
-
-
 					<?php
 					if(function_exists('yarpp_related')) {
 						yarpp_related();
