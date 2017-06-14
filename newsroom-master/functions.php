@@ -352,4 +352,35 @@ add_shortcode( 'author_list', 'author_list_func' );
 
 
 
+/******************************************
+CUSTOM AUTHOR CARD SHORTCODE
+******************************************/
+
+function author_card_func() {
+
+	$author_id = get_the_author_meta( 'ID' );
+
+	$authorcard = '<div class="author-card">';
+		$authorcard .= '<div class="author-bio-avatar">';
+			$authorcard .= get_avatar( get_the_author_meta( 'user_email' ) ); 
+		$authorcard .= '</div>';
+
+		$authorcard .= '<div class="author-bio-description">';
+		$authorcard .= '<h3 class="author-headline">' . get_the_author() . '</h3>';
+		if ( get_the_author_meta( 'description' ) ) : 
+				$authorcard .= '<p class="author-card-about">About the author</p>';
+				$authorcard .= get_the_author_meta( 'description' ); 
+		endif;
+		$authorcard .= '</div>';
+		$authorcard .= '<div class="author-card-count">';
+			$authorcard .= '<ul>';
+				$authorcard .= '<li>' . count_user_posts($author_id) . ' Posts</li>';
+				$authorcard .= '<li><a href="' . get_bloginfo('url') . '/author/' . get_the_author_meta( 'user_nicename' ) . '">See all <span class="mobHide">posts by this author</span></a></li>';
+			$authorcard .= '</ul>';
+		$authorcard .= '</div>';
+	$authorcard .= '</div>';
+
+	return $authorcard;
+}
+add_shortcode('author_card', 'author_card_func');
 
